@@ -11,23 +11,23 @@
 ## 4. get the value of the mean
 
 makeCacheMatrix <- function(x = matrix()) {
-  m <- NULL
-  set <- function(y) {
+  m <- NULL                                  # Here we make four functions, and output
+  set <- function(y) {                       # then as a list.
     x <<- y
     m <<- NULL
   }
-  get <- function() {
+  get <- function() {                        # Grabs the data file
     x
   }
-  setinverse <- function(solve) {
-    s <<- solve
+  setinverse <- function(solve) {            # Sets the solve variable, from the
+    s <<- solve                              # external cacheSolve function
   }
-  getinverse<- function() {
-    s
+  getinverse<- function() {                  # Retrieves the matric inverse, if already
+    s                                        # computed
   }
   list(set = set, get = get,
        setinverse = setinverse,
-       getinverse = getinverse) #Return vector type list of functions
+       getinverse = getinverse)             #Returns vector type list of 4 functions
 }
 
 
@@ -48,7 +48,7 @@ cacheSolve <- function(x, ...) {     ##Goal: Return a matrix that is the inverse
     return(s)                        #exit program without 
   }                                  #subsequent code
   data <- x$get()             
-  s <- solve(data, ...)              # otherwise, put the data in the
-  x$setinverse(s)                    # 'data'. Compute the mean of the 
-  s                                  # function to cache the mean                                     # return the mean
+  s <- solve(data, ...)              # otherwise, puts the data in the
+  x$setinverse(s)                    # 'data'. Computes the mean of the 
+  s                                  # function to cache the mean, and submits answer                                    # return the mean
 }
