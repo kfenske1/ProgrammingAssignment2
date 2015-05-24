@@ -10,6 +10,12 @@
 ## 3. set the value of the mean
 ## 4. get the value of the mean
 
+kkdata <- matrix(c(1,3,4,5,6,23,13,9), 3,3)
+kkdata
+kk <- makeCacheMatrix(kkdata)
+kk
+
+
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   set <- function(y) {
@@ -50,5 +56,12 @@ cacheSolve <- function(x, ...) {     ##Goal: Return a matrix that is the inverse
   data <- x$get()             
   s <- solve(data, ...)              # otherwise, put the data in the
   x$setinverse(s)                    # 'data'. Compute the mean of the 
-  s                                  # function to cache the mean                                     # return the mean
+  s                                  # function to cache the mean
+                                     # return the mean
 }
+
+kk <- makeCacheMatrix(kkdata)
+kk
+
+ans <- cacheSolve(kk)
+
